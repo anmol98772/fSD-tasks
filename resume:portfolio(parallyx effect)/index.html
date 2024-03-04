@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Introducing Myself</title>
+    <link rel = "stylesheet" type = "text/css" href=" style.css">
+</head>
+<body>
+  <header>
+
+          <a class="profile">MY PROFILE</a>
+          <ul>
+              <li><a  class="active">Home</a></li>
+              <li><a >About</a></li>
+              <li><a >Expertise</a></li>
+              <li><a >Projects</a></li>
+              <li><a >Intrests/hobbies</a></li>
+          </ul>
+      </header>
+      <section>
+          <img src ="stars.png" id="stars" alt="stars">
+          <img src="moon.png" id="moon" alt="moon">
+          <img src="mountains_behind.png" id="mountains_behind" alt="mountains">
+          <h2 id="text"></h2>
+          <a href="#sec" id="btn"></a>
+          <img src="mountains_front.png" id="mountains_front" alt="mountains">
+
+      </section>
+  <div class="sec" id='sec'>
+      <h2>Anmolpreet kaur</h2>
+      <div class="container">
+          <div class ="card">
+              <div class="content">
+                  <h2>01</h2>
+                  <h3>About</h3>
+                  <p>I'm a passionate and driven individual who loves diving into new challenges head-on. Whether it's tackling a complex problem at work or pursuing a new hobby, I always bring my A-game. I'm an adventurous soul with an insatiable curiosity for the world around me.</p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+          <div class ="card">
+              <div class="content">
+                  <h2>02</h2>
+                  <h3>Expertise</h3>
+                  <p> * Programming Language : java , OOPs <br><br>* Data Structures and Algorithms<br><br> Web development: HTML, CSS <br><br> Cyber Security and Ethical Hacking </p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+
+          <div class ="card">
+              <div class="content">
+                  <h2>03</h2>
+                  <h3>Personal projects</h3>
+                  <p>* Banking Application <br><br> * Single desktop chatting Server <br><br> * calculator<br><br> * Android Hacking and Analysis</p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+          <div class ="card">
+              <div class="content">
+                  <h2>04</h2>
+                  <h3>Education</h3>
+                  <p>* Punjabi University,Patiala (09/2020-present): B.Tech(ECM)<br><br> * 12(Non-Med){2019-20}& 10th{2017-18}: Mehta Gurukul Public School, Doraha</p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+          <div class ="card">
+              <div class="content">
+                  <h2>05</h2>
+                  <h3>Coaching and Training</h3>
+                  <p>* JAVA and Data Structures & Algorithms : Coding Blocks Academy<br><br> * Cyber Security and Hacking : TCIL-IT</p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+          <div class ="card">
+              <div class="content">
+                  <h2>06</h2>
+                  <h3>Intrests</h3>
+                  <p>* Coding and Problem solving<br><br> * Co-curricular activities active participant <br><br> Exploring and Treking </p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+          <div class ="card">
+              <div class="content">
+                  <h2>07</h2>
+                  <h3>Languages</h3>
+                  <p>* ENGLISH<br><br> * HINDI<BR><br> * PUNJABI</p>
+                  <a href="#">Read More</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script type="text/javascript" src="vanilla-tilt.js"></script>
+      <script>
+          VanillaTilt.init(document.querySelectorAll(".card"),{
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1,
+          });
+
+      </script>
+  <script>
+      let stars = document.getElementById('stars');
+      let moon = document.getElementById('moon');
+      let mountains_behind = document.getElementById('mountains_behind');
+      let btn = document.getElementById('btn');
+      let mountains_front = document.getElementById('mountains_front');
+      let text = document.getElementById('text');
+      let header = document.querySelector('header');
+
+      window.addEventListener('scroll', function(){
+        let value = window.scrollY;
+        stars.style.left = value * 0.25 + 'px';
+        moon.style.top = value * 1.05 + 'px';
+        mountains_behind.style.top = value * 0.5 + 'px';
+        mountains_front.style.top = value * 0 + 'px';
+        text.style.marginLeft= value * 4 + 'px';
+        text.style.marginTop= value * 1.5 + 'px';
+        btn.style.marginRight= value * 1.5 + 'px';
+        header.style.top = value * 0.05 + 'px';
+
+      })
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traffic Light</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    width: 350px;
+   background-color: rgba(0, 0, 0,0.4);
+   border-radius: 10px;
+  }
+
+  .traffic-light {
+    width: 100px;
+    height: 300px;
+    margin-top: 15px;
+    background-color: #333;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .light {
+    width: 80px;
+    height: 80px;
+  
+    border-radius: 50%;
+    border: 2px solid #222;
+    background-color: white; /* Initially white */
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #red { background-color: red; }
+  #orange { background-color: orange; }
+  #green { background-color: green; }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button {
+    margin: 5px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .sequential-glow-btn {
+    background-color: #ddd;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="traffic-light">
+      <div id="red" class="light"></div>
+      <div id="orange" class="light"></div>
+      <div id="green" class="light"></div>
+    </div>
+    <div class="button-container">
+      <button id="red-btn" class="button" onclick="changeColor('red')">Red</button>
+      <button id="orange-btn" class="button" onclick="changeColor('orange')">Orange</button>
+      <button id="green-btn" class="button" onclick="changeColor('green')">Green</button>
+      <button id="all-glow-btn" class="button" onclick="glowAll()">All Glow</button>
+      <button id="sequential-glow-btn" class="button sequential-glow-btn" onclick="sequentialGlow()">ALT</button>
+    </div>
+  </div>
+
+  <script>
+    function changeColor(color) {
+      // to set all the lights to white color 
+      document.getElementById('red').style.backgroundColor = 'white';
+      document.getElementById('orange').style.backgroundColor = 'white';
+      document.getElementById('green').style.backgroundColor = 'white';
+
+      //  to set the light same as color selected
+      document.getElementById(color).style.backgroundColor = color;
+      
+      // will reset the button color
+      document.getElementById('red-btn').style.backgroundColor = '#ddd';
+      document.getElementById('orange-btn').style.backgroundColor = '#ddd';
+      document.getElementById('green-btn').style.backgroundColor = '#ddd';
+
+      // Change button color
+      document.getElementById(color + '-btn').style.backgroundColor = color;
+
+      // Reset light color after 1 second
+      setTimeout(function() {
+        document.getElementById(color).style.backgroundColor = 'white';
+      }, 1000);
+
+      // Reset button color after 1 second
+      setTimeout(function() {
+        document.getElementById(color + '-btn').style.backgroundColor = '#ddd';
+      }, 1000);
+    }
+
+    function glowAll() {
+      // Set all lights to their respective colors
+      document.getElementById('red').style.backgroundColor = 'red';
+      document.getElementById('orange').style.backgroundColor = 'orange';
+      document.getElementById('green').style.backgroundColor = 'green';
+
+      // Change button color
+      document.getElementById('red-btn').style.backgroundColor = 'red';
+      document.getElementById('orange-btn').style.backgroundColor = 'orange';
+      document.getElementById('green-btn').style.backgroundColor = 'green';
+
+      // Reset light colors after 1 second
+      setTimeout(function() {
+        document.getElementById('red').style.backgroundColor = 'white';
+        document.getElementById('orange').style.backgroundColor = 'white';
+        document.getElementById('green').style.backgroundColor = 'white';
+      }, 1000);
+
+      // Reset button colors after 1 second
+      setTimeout(function() {
+        document.getElementById('red-btn').style.backgroundColor = '#ddd';
+        document.getElementById('orange-btn').style.backgroundColor = '#ddd';
+        document.getElementById('green-btn').style.backgroundColor = '#ddd';
+      }, 1000);
+    }
+
+    function sequentialGlow() {
+      var lights = ['red', 'orange', 'green'];
+      var i = 0;
+      var intervalId = setInterval(function() {
+        // Reset all lights to white
+        document.getElementById('red').style.backgroundColor = 'white';
+        document.getElementById('orange').style.backgroundColor = 'white';
+        document.getElementById('green').style.backgroundColor = 'white';
+
+        // Set the current light to its respective color
+        document.getElementById(lights[i]).style.backgroundColor = lights[i];
+
+        // Reset background color of the sequential glow button
+        document.getElementById('sequential-glow-btn').style.backgroundColor = '#ddd';
+
+        // Change button color to match the current light
+        document.getElementById('sequential-glow-btn').style.backgroundColor = lights[i];
+
+        // Reset light color after 1 second
+        setTimeout(function() {
+          document.getElementById(lights[i]).style.backgroundColor = 'white';
+        }, 1000);
+
+        // Reset button color after 1 second
+        setTimeout(function() {
+          document.getElementById('sequential-glow-btn').style.backgroundColor = '#ddd';
+        }, 1000);
+
+        i++;
+        if (i >= lights.length) {
+          clearInterval(intervalId);
+        }
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
